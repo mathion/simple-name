@@ -18,12 +18,16 @@ public class Player {
         this.playerNum = playerNum;
     }
 
-    public void makeMove(Game game){
-
+    public void makeMove(Game game) {
     }
 
-    public void punish(){}
-    public void reward(){}
-    public void drawReward(){}
+    public void punish() {
+    }
+
+    public void reward() {
+    }
+
+    public void drawReward() {
+    }
 
 }

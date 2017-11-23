@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class HumanPLayer extends Player {
     Scanner scanner = new Scanner(System.in);
 
-    public void makeMove(Game game){
+    public void makeMove(Game game) {
         game.printBoardState();
         boolean failedToClaim;
         do {
@@ -13,12 +13,12 @@ public class HumanPLayer extends Player {
             int choice = Integer.parseInt(scanner.nextLine());
 
             try {
-                game.claim(choice,getPlayerNum());
-                failedToClaim =false;
-            }catch (IllegalArgumentException e){
+                game.claim(choice, getPlayerNum());
+                failedToClaim = false;
+            } catch (IllegalArgumentException e) {
                 failedToClaim = true;
             }
-        }while (failedToClaim);
+        } while (failedToClaim);
 
     }
 }

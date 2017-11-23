@@ -31,27 +31,26 @@ public class Bot {
         int randomNum = randomGen.nextInt(weightTotal);
         int goal = 0;
         for (int i = 0; i < availableSpaces.size(); i++) {
-                goal += weights[i];
-
-            if (randomNum<=goal){
-                lastChoice=i;
+            goal += weights[i];
+            if (randomNum <= goal) {
+                lastChoice = i;
                 return availableSpaces.get(i);
             }
         }
         throw new RuntimeException();
     }
 
-    public void punish(){
-        if (weights[lastChoice]>1){
-            weights[lastChoice]-=1;
+    public void punish() {
+        if (weights[lastChoice] > 1) {
+            weights[lastChoice] -= 1;
         }
     }
 
-    public void reward(){
-        weights[lastChoice]+=3;
+    public void reward() {
+        weights[lastChoice] += 3;
     }
 
-    public void drawReward(){
-        weights[lastChoice]+=1;
+    public void drawReward() {
+        weights[lastChoice] += 1;
     }
 }

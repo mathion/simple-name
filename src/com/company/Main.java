@@ -1,8 +1,7 @@
 package com.company;
 
-import javax.swing.*;
-import java.awt.*;
-import java.util.Scanner;
+//import javax.swing.*;
+//import java.awt.*;
 
 public class Main {
 
@@ -65,14 +64,15 @@ public class Main {
         }
     }
 
-    private static JFrame initializeWindow(String title, int size, int xLocation, int yLocation) {
-        JFrame window = new JFrame(title);
-        window.setSize(size, size);
-        window.setLocation(xLocation, yLocation);
-        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        window.setVisible(true);
-        window.getContentPane().setBackground(Color.GRAY);
-        return window;
+//    private static JFrame initializeWindow(String title, int size, int xLocation, int yLocation) {
+//        JFrame window = new JFrame(title);
+//        window.setSize(size, size);
+//        window.setLocation(xLocation, yLocation);
+//        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//        window.setVisible(true);
+//        window.getContentPane().setBackground(Color.GRAY);
+//        return window;
+//
+//    }
 
-    }
 }

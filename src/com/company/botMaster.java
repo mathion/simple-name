@@ -36,7 +36,7 @@ public class botMaster extends Player {
                 break;
             }
         }
-        game.claim(choice,getPlayerNum());
+        game.claim(choice, getPlayerNum());
 
     }
 

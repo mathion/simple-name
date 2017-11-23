@@ -30,7 +30,6 @@ public class Game {
     private int winCounter = 0;
 
 
-
     public Game() {
     }
 
@@ -203,12 +202,12 @@ public class Game {
         } else {
             System.out.println("Player " + (3 - 2 * (endBoardState % 2)) + " Wins!");
             this.winCounter += endBoardState;
-            System.out.println("Balance of power is "+winCounter);
+            System.out.println("Balance of power is " + winCounter);
         }
-        if (endBoardState==1){
+        if (endBoardState == 1) {
             player1.reward();
             player2.punish();
-        }else if (endBoardState==-1){
+        } else if (endBoardState == -1) {
             player2.reward();
             player1.punish();
         }
