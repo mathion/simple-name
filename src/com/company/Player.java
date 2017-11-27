@@ -1,6 +1,6 @@
 package com.company;
 
-public class Player {
+public abstract class Player {
     private int playerNum;
 
     public Player(int playerNum) {
@@ -18,16 +18,12 @@ public class Player {
         this.playerNum = playerNum;
     }
 
-    public void makeMove(Game game) {
-    }
+    public abstract void makeMove(Game game);
 
-    public void punish() {
-    }
+    public abstract void punish();
 
-    public void reward() {
-    }
+    public abstract void reward();
 
-    public void drawReward() {
-    }
+    public abstract void drawReward();
 
 }

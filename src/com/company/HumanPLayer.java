@@ -21,4 +21,13 @@ public class HumanPLayer extends Player {
         } while (failedToClaim);
 
     }
+
+    public void punish() {
+    }
+
+    public void reward() {
+    }
+
+    public void drawReward() {
+    }
 }
