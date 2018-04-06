@@ -101,6 +101,8 @@ public class Game {
       if (temp != 0) {
         return temp;
       }
+
+      //Checks horizontal lines
       temp = (boardState[3 * i] + boardState[(3 * i) + 1] + boardState[(3 * i) + 2]) / 3;
 
       if (temp != 0) {
@@ -108,6 +110,7 @@ public class Game {
       }
     }
 
+      //Checks diagonal lines
     temp = (boardState[0] + boardState[4] + boardState[8]) / 3;
 
     if (temp != 0) {
@@ -120,11 +123,14 @@ public class Game {
       return temp;
     }
 
+    //Checks for empty squares
     for (int space : boardState) {
       if (space == 0) {
         return 0;
       }
     }
+
+    //If no player has won and their are no empty squares the game is a draw
     return 2;
   }
 
@@ -169,6 +175,9 @@ public class Game {
   }
 
   public void printBoardState() {
+    /**
+     * Prints a representation of the game board to the console.
+     */
     System.out.println("Board State");
     System.out.println(boardState[0] + "|" + boardState[1] + "|" + boardState[2]);
     System.out.println("-----");
@@ -178,6 +187,12 @@ public class Game {
   }
 
   public void runGame() {
+    /**
+     * This method will run the main game loop
+     * and will send punishment and reward commands to each player at the end of the game.
+     */
+
+    //this is the game loop
     while (this.checkBoardState() == 0) {
       player1.makeMove(this);
       if (this.checkBoardState() != 0) {
@@ -185,7 +200,10 @@ public class Game {
       }
       player2.makeMove(this);
     }
+
+    //these blocks will print the outcome of the game and reward or punish players
     int endBoardState = this.checkBoardState();
+
     if (endBoardState == 2) {
       System.out.println("Draw after " + turnCounter + " Turns");
       player1.drawReward();

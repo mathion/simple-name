@@ -43,7 +43,6 @@ public class botMaster extends Player {
       failedBot.punish();
     }
     chosenBots.removeAll(chosenBots);
-
   }
 
   public void reward() {
@@ -51,7 +50,6 @@ public class botMaster extends Player {
       failedBot.reward();
     }
     chosenBots.removeAll(chosenBots);
-
   }
 
   public void drawReward() {
