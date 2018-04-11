@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class botMaster extends Player {
+public class botMaster extends Player implements Learning {
 
   private List<Bot> bots = new ArrayList<>();
   private List<int[]> gameStates = new ArrayList<>();
@@ -25,7 +25,6 @@ public class botMaster extends Player {
       gameStates.add(currentBoard.clone());
       bots.add(new Bot(game));
     }
-
     for (int i = 0; i < gameStates.size(); i++) {
 
       if (Arrays.equals(currentBoard, gameStates.get(i))) {
@@ -35,7 +34,6 @@ public class botMaster extends Player {
       }
     }
     game.claim(choice, getPlayerNum());
-
   }
 
   public void punish() {

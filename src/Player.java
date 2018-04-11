@@ -6,23 +6,15 @@ public abstract class Player {
     this.playerNum = playerNum;
   }
 
-  public Player() {
-  }
+  Player() {}
 
-  public int getPlayerNum() {
+  int getPlayerNum() {
     return playerNum;
   }
 
-  public void setPlayerNum(int playerNum) {
+  void setPlayerNum(int playerNum) {
     this.playerNum = playerNum;
   }
 
-  public abstract void makeMove(Game game);
-
-  public abstract void punish();
-
-  public abstract void reward();
-
-  public abstract void drawReward();
-
+  abstract void makeMove(Game game);
 }

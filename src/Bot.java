@@ -24,6 +24,10 @@ public class Bot {
     this.choices = choices;
   }
 
+  /**
+   * Chooses a space based on a weighted random selection.
+   * @return returns the space the bot chooses
+   */
   public int makeChoice() {
     int weightTotal = IntStream.of(weights).sum();
     int randomNum = randomGen.nextInt(weightTotal);

@@ -5,14 +5,8 @@ public class Game {
 
   /**
    * This array stores the game state The index of the array corresponds to the position on the
-   * board like so:
-   * 0|1|2
-   * -----
-   * 3|4|5
-   * -----
-   * 6|7|8
-   * The value of each element stores the contents of the space 0 = unclaimed 1  = player 1 -1 =
-   * player 2
+   * board like so: 0|1|2 ----- 3|4|5 ----- 6|7|8 The value of each element stores the contents of
+   * the space 0 = unclaimed 1  = player 1 -1 = player 2
    */
 
   private int[] boardState = new int[9];
@@ -87,11 +81,10 @@ public class Game {
     }
   }
 
+  /** Checks the game state for if a player has three pieces in a row.
+   * Returns 1 if player 1 has won, -1 if player two has, 0 for undecided and 2 for a draw
+   */
   private int checkBoardState() {
-    /** Checks the game state for if a player has three pieces in a row.
-     * Returns 1 if player 1 has won, -1 if player two has, 0 for undecided and 2 for a draw
-     */
-
     int temp = 0;
 
     //Checks vertical lines
@@ -110,7 +103,7 @@ public class Game {
       }
     }
 
-      //Checks diagonal lines
+    //Checks diagonal lines
     temp = (boardState[0] + boardState[4] + boardState[8]) / 3;
 
     if (temp != 0) {
@@ -134,13 +127,13 @@ public class Game {
     return 2;
   }
 
+  /**
+   *Marks a space as taken by a player.
+   * @param location location to claim
+   * @param player player to claim space
+   * @throws IllegalArgumentException throws exception if a space is already taken, the player number is wrong or if the location is out of bounds
+   */
   public void claim(int location, int player) throws IllegalArgumentException {
-
-    /**
-     Marks a space as taken by a player.
-     player can either be 1 or -1
-     Prints an error message if inputs are invalid
-     */
 
     if (location > 8 || location < 0) {
       System.out.println("Invalid Location");
@@ -174,10 +167,10 @@ public class Game {
     return available;
   }
 
+  /**
+   * Prints a representation of the game board to the console.
+   */
   public void printBoardState() {
-    /**
-     * Prints a representation of the game board to the console.
-     */
     System.out.println("Board State");
     System.out.println(boardState[0] + "|" + boardState[1] + "|" + boardState[2]);
     System.out.println("-----");
@@ -186,12 +179,11 @@ public class Game {
     System.out.println(boardState[6] + "|" + boardState[7] + "|" + boardState[8]);
   }
 
+  /**
+   * This method will run the main game loop
+   * and will send punishment and reward commands to each player at the end of the game.
+   */
   public void runGame() {
-    /**
-     * This method will run the main game loop
-     * and will send punishment and reward commands to each player at the end of the game.
-     */
-
     //this is the game loop
     while (this.checkBoardState() == 0) {
       player1.makeMove(this);
@@ -206,24 +198,39 @@ public class Game {
 
     if (endBoardState == 2) {
       System.out.println("Draw after " + turnCounter + " Turns");
-      player1.drawReward();
-      player2.drawReward();
-
+      if (player1 instanceof Learning) {
+        ((Learning) player1).drawReward();
+      }
+      if (player2 instanceof Learning) {
+        ((Learning) player2).drawReward();
+      }
     } else {
       System.out.println("Player " + (endBoardState == 1 ? "1" : "2") + " Wins!");
       this.winCounter += endBoardState;
       System.out.println("Balance of power is " + winCounter);
     }
     if (endBoardState == 1) {
-      player1.reward();
-      player2.punish();
+      if (player1 instanceof Learning) {
+        ((Learning) player1).reward();
+      }
+      if (player2 instanceof Learning) {
+        ((Learning) player2).punish();
+      }
     } else if (endBoardState == -1) {
-      player2.reward();
-      player1.punish();
+      if (player1 instanceof Learning) {
+        ((Learning) player1).punish();
+      }
+      if (player2 instanceof Learning) {
+        ((Learning) player2).reward();
+      }
     }
   }
 
+  /**
+   * Resets the board and turn counter.
+   */
   public void reset() {
+
     boardState = new int[9];
     turnCounter = 0;
   }
